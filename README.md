@@ -55,11 +55,23 @@ installed user picks it up on their next update — no manual copying.
   `extraKnownMarketplaces` / `enabledPlugins` in `.claude/settings.json` — see
   [Discovering plugins](https://code.claude.com/docs/en/discover-plugins.md).
 
-**Any other Agent Skills-compliant client** (GitHub Copilot/VS Code, Cursor, OpenAI Codex,
-Gemini CLI, Microsoft 365 Copilot Cowork, etc.): point it at the `skills/` folder (or an
-individual `skills/<slug>/` folder) the way that client documents for loading Agent Skills
-— the plugin marketplace above is a Claude-specific installation convenience, not a
-different skill format.
+**Install everything at once (49 other clients):** the
+[GitHub CLI's `gh skill` command](https://cli.github.com/manual/gh_skill_install) installs
+every skill in any GitHub repo with no manifest required — it auto-discovers the same
+`skills/*/SKILL.md` layout this repo already uses. One command covers GitHub Copilot,
+Cursor, OpenAI Codex, Gemini CLI, Claude Code, and dozens more:
+
+```
+gh skill install Zywave/skills --all
+```
+
+(Requires GitHub CLI v2.90.0+.) Drop `--all` to pick specific skills interactively instead.
+
+**Any other Agent Skills-compliant client** (Microsoft 365 Copilot Cowork, etc. — see the
+full [client list](https://agentskills.io/clients)): point it at the `skills/` folder (or
+an individual `skills/<slug>/` folder) the way that client documents for loading Agent
+Skills. Both install paths above are conveniences on top of the same files — nothing here
+is a different skill format per client.
 
 Every skill here assumes the Zywave MCP server is connected — without it, the tools a
 skill calls out by name aren't available and it can't complete its steps.
