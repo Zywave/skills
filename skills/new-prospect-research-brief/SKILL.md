@@ -31,17 +31,21 @@ account, and wants a research brief to prepare for first outreach.
      MSIDs start with `H`.
    - If more than one plausible match comes back, show the candidates to the producer
      (name, location, any distinguishing detail) and ask which one before continuing.
+   - If nothing comes back, tell the producer no match was found and ask if the name or
+     location should be adjusted, rather than guessing.
 
 3. **Pull the contacts.**
    - Company: call `discovery_company_contacts_get` with the MSID from step 2.
    - Household: call `discovery_household_contact_get` with the MSID from step 2.
 
 4. **Generate the research brief.** Call `research_brief_generate` with the MSID. This
-   returns a `publicId` immediately — the brief is not ready yet.
+   kicks off the brief, but it isn't ready right away — you'll get a tracking reference
+   for it.
 
-5. **Poll until the brief is ready.** Call `research_brief_get` with the `publicId` from
-   step 4, repeating until `status` is `complete` or `failed`. Do not report to the producer
-   until you've reached one of these two states.
+5. **Poll until the brief is ready.** Check back on it every so often using
+   `research_brief_get` until it finishes or comes back as failed; don't report anything
+   to the producer until you know which one it is. If it's taking longer than expected,
+   let the producer know rather than checking silently forever.
 
 6. **Present the result.**
    - If `complete`: summarize the brief for the producer, include the contacts from step 3,
