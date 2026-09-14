@@ -14,8 +14,10 @@ Copilot Cowork, and more (see the full [client list](https://agentskills.io/clie
 
 ```
 skills/          every skill, one folder per slug — this is the whole deliverable
-docs/            guide for writing a new skill
+docs/            guide for writing a new skill, and how to install into each client
 .claude-plugin/  marketplace + plugin manifests, so this repo installs as one Claude plugin
+.agents/         marketplace manifest for ChatGPT/Codex's plugin import
+plugin.json      generic plugin manifest read by the .agents/ marketplace above
 ```
 
 ## Skills
@@ -36,42 +38,19 @@ file every client reads.
 
 ## Using a skill
 
-**Install everything at once (Claude Code, Claude Desktop):** this repo is set up as a
-Claude plugin marketplace (`.claude-plugin/marketplace.json` + `plugin.json`) offering one
-plugin that bundles all the skills above. Whenever a skill is added or edited here, every
-installed user picks it up on their next update — no manual copying.
-
-- **Claude Code (CLI):**
-  ```
-  /plugin marketplace add Zywave/skills
-  /plugin install zywave-skills@zywave-skills
-  ```
-  If this repo is private, your git credentials need access to it — see
-  [Claude Code's private repository docs](https://code.claude.com/docs/en/plugin-marketplaces.md)
-  if the add command can't reach it.
-- **Claude Desktop:** the **+** button → **Plugins** → **Add plugin**, then browse to this
-  marketplace and install `zywave-skills`.
-- **Managed/cloud sessions:** an admin can pre-configure this marketplace for a team via
-  `extraKnownMarketplaces` / `enabledPlugins` in `.claude/settings.json` — see
-  [Discovering plugins](https://code.claude.com/docs/en/discover-plugins.md).
-
-**Install everything at once (49 other clients):** the
-[GitHub CLI's `gh skill` command](https://cli.github.com/manual/gh_skill_install) installs
-every skill in any GitHub repo with no manifest required — it auto-discovers the same
-`skills/*/SKILL.md` layout this repo already uses. One command covers GitHub Copilot,
-Cursor, OpenAI Codex, Gemini CLI, Claude Code, and dozens more:
+**Terminal, any client:** one command installs every skill here into any of 49 supported
+clients — GitHub Copilot, Cursor, OpenAI Codex, Gemini CLI, Claude Code, and more:
 
 ```
 gh skill install Zywave/skills --all
 ```
 
-(Requires GitHub CLI v2.90.0+.) Drop `--all` to pick specific skills interactively instead.
-
-**Any other Agent Skills-compliant client** (Microsoft 365 Copilot Cowork, etc. — see the
-full [client list](https://agentskills.io/clients)): point it at the `skills/` folder (or
-an individual `skills/<slug>/` folder) the way that client documents for loading Agent
-Skills. Both install paths above are conveniences on top of the same files — nothing here
-is a different skill format per client.
+**Desktop or web app, no terminal:** see
+[`docs/installing-skills.md`](docs/installing-skills.md) for the exact steps in the Claude
+Desktop app, claude.ai, ChatGPT, Gemini Enterprise, and Microsoft 365 Copilot Cowork —
+including the one-time marketplace setup (`/plugin marketplace add Zywave/skills` in
+Claude Code, or a workspace admin importing this repo in ChatGPT) that makes every future
+skill added here install automatically for already-connected users.
 
 Every skill here assumes the Zywave MCP server is connected — without it, the tools a
 skill calls out by name aren't available and it can't complete its steps.
