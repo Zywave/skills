@@ -1,40 +1,43 @@
 # Zywave AI Skills
 
-Repository for AI Zywave LLM skills that are primarily enabled by the Zywave MCP server.
+Reusable insurance-workflow skills for producers, account managers, and producer managers
+— researching a prospect, sizing a territory, assembling a compliance notice packet,
+running a prospecting campaign — built on Zywave's MCP tools.
 
-These skills give insurance professionals (producers, account managers, producer managers)
-reusable workflows — researching a prospect, prepping a renewal, running an outreach
-sequence — that work across the AI clients Zywave supports:
-
-- **Claude** (claude.ai, Claude Desktop) and **Claude Code** — skills are consumed directly
-  from `skills/`, no conversion needed.
-- **ChatGPT** — via a Custom GPT, using the adapted instructions generated into
-  `platforms/chatgpt/`.
-- **Office365 Copilot** — via a declarative agent, using the manifest and instructions
-  generated into `platforms/office365/`.
+Every skill is a single `skills/<slug>/SKILL.md` file, written in the open
+[Agent Skills](https://agentskills.io) format (the same format Claude uses natively).
+There's no per-platform conversion: any compliant AI client reads it directly — Claude,
+Claude Code, GitHub Copilot/VS Code, Cursor, OpenAI Codex, Gemini CLI, Microsoft 365
+Copilot Cowork, and more (see the full [client list](https://agentskills.io/clients)).
 
 ## Repository layout
 
 ```
-skills/     canonical skill source — author here
-platforms/  generated ChatGPT/Office365 outputs (committed, not hand-edited)
-docs/       authoring guide + per-platform setup notes
-tools/      generator script that produces platforms/ from skills/
+skills/  every skill, one folder per slug — this is the whole deliverable
+docs/    guide for writing a new skill
 ```
+
+## Skills
+
+| Skill | What it does |
+|---|---|
+| [`book-of-business-audit`](skills/book-of-business-audit/) | Sweep the CRM book for data-quality issues (missing contacts, duplicates, stale records) into a workbook. Read-only. |
+| [`cobra-notice-packet`](skills/cobra-notice-packet/) | Assemble the correct COBRA notice packet for a coverage-start, election, or termination event. |
+| [`eb-annual-notice-packet`](skills/eb-annual-notice-packet/) | Assemble an employer's annual group health plan notice packet and distribution memo. |
+| [`territory-market-map`](skills/territory-market-map/) | Size a sales territory or market from Zywave discovery data into a workbook and memo. |
+| [`vertical-prospecting-campaign`](skills/vertical-prospecting-campaign/) | Run a full prospecting motion for one industry vertical, from ideal customer profile to a scheduled outreach sequence. |
 
 ## Adding or updating a skill
 
-1. Read [`docs/authoring-guide.md`](docs/authoring-guide.md) and write or edit
-   `skills/<slug>/SKILL.md`.
-2. Regenerate the platform outputs:
-   ```bash
-   cd tools
-   npm run generate
-   ```
-3. Commit `skills/` and `platforms/` together.
+Read [`docs/authoring-guide.md`](docs/authoring-guide.md) and write or edit
+`skills/<slug>/SKILL.md`. There's no build or generation step — the file you write is the
+file every client reads.
 
 ## Using a skill
 
-- **Claude / Claude Code:** see [`docs/platform-notes/claude.md`](docs/platform-notes/claude.md).
-- **ChatGPT:** see [`docs/platform-notes/chatgpt.md`](docs/platform-notes/chatgpt.md).
-- **Office365 Copilot:** see [`docs/platform-notes/office365.md`](docs/platform-notes/office365.md).
+Point your AI client at the `skills/` folder (or an individual `skills/<slug>/` folder),
+the way that client documents for loading Agent Skills. For Claude Code specifically, copy
+or symlink the skill folder into your project's `.claude/skills/` directory.
+
+Every skill here assumes the Zywave MCP server is connected — without it, the tools a
+skill calls out by name aren't available and it can't complete its steps.
