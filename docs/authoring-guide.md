@@ -28,8 +28,10 @@ mcp_tools:                    # every Zywave MCP tool this skill calls
 ```
 
 `name` and `description` are read by Claude's native skill mechanism — keep them accurate
-and short. `category`, `audience`, and `mcp_tools` are read by the generator in `tools/` to
-produce the ChatGPT and Office365 versions; they don't need to mean anything to Claude.
+and short. `audience` and `mcp_tools` are read by the generator in `tools/` to produce the
+ChatGPT and Office365 versions; they don't need to mean anything to Claude. `category` is
+for authors browsing `skills/` to group related skills by eye — it isn't currently read by
+the generator or by Claude.
 
 List every MCP tool the skill instructs the reader to call in `mcp_tools`, using the exact
 tool name. The generator turns this into a checklist of what a ChatGPT or Office365
