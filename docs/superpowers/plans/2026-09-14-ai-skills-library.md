@@ -373,10 +373,16 @@ git commit -m "Add Office365 manifest and instructions renderer"
   "type": "module",
   "scripts": {
     "generate": "node generate-platforms.mjs",
-    "test": "node --test lib/"
+    "test": "node --test lib/*.test.mjs"
   }
 }
 ```
+
+> **Correction (discovered during Task 3's review):** `node --test lib/` (a bare directory
+> path) fails with `MODULE_NOT_FOUND` on this Node v24 / Windows setup — it does not recurse
+> into the directory to discover test files the way it does on some other platforms. The
+> glob form `node --test lib/*.test.mjs` works correctly and is what's used above and in
+> Step 3 below.
 
 - [ ] **Step 2: Write `tools/generate-platforms.mjs`**
 
@@ -448,9 +454,9 @@ main();
 - [ ] **Step 3: Verify the renderer tests still pass from the new package location**
 
 Run: `cd tools && npm test`
-Expected: PASS, 6 tests passing — `node --test lib/` picks up every `*.test.mjs` under
-`tools/lib/`, so this re-runs Task 1's 2 frontmatter tests plus Task 2's 2 ChatGPT tests
-plus Task 3's 2 Office365 tests (2 + 2 + 2 = 6). Confirm none failed.
+Expected: PASS, 6 tests passing — `node --test lib/*.test.mjs` picks up every `*.test.mjs`
+under `tools/lib/`, so this re-runs Task 1's 2 frontmatter tests plus Task 2's 2 ChatGPT
+tests plus Task 3's 2 Office365 tests (2 + 2 + 2 = 6). Confirm none failed.
 
 - [ ] **Step 4: Commit**
 
