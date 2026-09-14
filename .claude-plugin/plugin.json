@@ -1,5 +1,6 @@
 {
   "name": "zywave-skills",
+  "displayName": "Insurance Skills",
   "version": "1.0.0",
   "description": "Insurance-workflow skills for producers, account managers, and producer managers, built on Zywave's MCP tools.",
   "skills": ["./skills/"]
