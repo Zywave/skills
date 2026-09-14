@@ -60,8 +60,10 @@ edits a skill, to keep `platforms/` in sync (manual — see Non-goals).
 
 ## Canonical skill format (`skills/<slug>/SKILL.md`)
 
-Standard Claude skill frontmatter plus a few extra fields the generator reads (Claude
-ignores unknown frontmatter keys, so this stays a single source of truth):
+Standard Claude skill frontmatter plus a few extra fields (Claude ignores unknown
+frontmatter keys, so this stays a single source of truth). The generator reads `audience`
+and `mcp_tools`; `category` is author-facing only (for browsing/grouping skills by eye) and
+isn't currently consumed by the generator or by Claude:
 
 ```yaml
 ---
