@@ -1,0 +1,9 @@
+{
+  "name": "zywave-skills-tools",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "generate": "node generate-platforms.mjs",
+    "test": "node --test lib/*.test.mjs"
+  }
+}
