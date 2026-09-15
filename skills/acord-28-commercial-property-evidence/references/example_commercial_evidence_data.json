@@ -1,0 +1,173 @@
+{
+  "meta": {
+    "specimen": true,
+    "source_documents": [
+      "loan_agreement.pdf",
+      "cp_policy.pdf"
+    ],
+    "extracted_on": "2026-08-19"
+  },
+  "certificate": {
+    "issue_date": "08/19/2026"
+  },
+  "producer": {
+    "name": "Zywave AI Demo Agency",
+    "contact_name": "Certificate Services",
+    "address1": "10100 W. Innovation Drive",
+    "address2": "Suite 300",
+    "city": "Wauwatosa",
+    "state": "WI",
+    "zip": "53226",
+    "phone": "(262) 555-0140",
+    "fax": "(262) 555-0141",
+    "email": "certificates@zywaveaidemoagency.example",
+    "customer_id": "RCH-88412",
+    "producer_code": "44127",
+    "sub_producer_code": "008",
+    "authorized_representative": "Brett Cleveringa"
+  },
+  "insurer": {
+    "name": "Northgate Specialty Insurance Company",
+    "naic": "99017",
+    "address1": "One Northgate Plaza",
+    "address2": "Suite 2200",
+    "city": "Hartford",
+    "state": "CT",
+    "zip": "06103"
+  },
+  "insured": {
+    "name": "Riverside Commerce Holdings LLC",
+    "additional_named_insured": "Riverside Commerce Operating Co., LLC",
+    "address1": "8875 Riverside Commerce Way",
+    "city": "Aurora",
+    "state": "IL",
+    "zip": "60502"
+  },
+  "policy": {
+    "type": "COMMERCIAL PROPERTY - SPECIAL FORM",
+    "policy_number": "NGS-CP-8841027",
+    "effective": "03/01/2026",
+    "expiration": "03/01/2027",
+    "continued_until_terminated": false,
+    "perils": [
+      "special"
+    ],
+    "covers": {
+      "building": true,
+      "business_personal_property": true
+    },
+    "limit": 16700000,
+    "deductible": 25000
+  },
+  "location": {
+    "address1": "8875 Riverside Commerce Way",
+    "city": "Aurora",
+    "state": "IL",
+    "zip": "60502"
+  },
+  "location_description": [
+    "142,000 SF single-story distribution warehouse, JM/Class A construction, built 2019, fully sprinklered (ESFR). Blanket building and business personal property."
+  ],
+  "coverages": {
+    "business_income_rental_value": {
+      "response": "yes",
+      "business_income": true,
+      "rental_value": false,
+      "limit": 3000000,
+      "actual_loss_sustained": true,
+      "months": 12
+    },
+    "blanket": {
+      "response": "yes",
+      "value": 16700000
+    },
+    "terrorism": {
+      "response": "yes"
+    },
+    "terrorism_exclusion": {
+      "response": "no"
+    },
+    "domestic_terrorism_exclusion": {
+      "response": "no"
+    },
+    "limited_fungus": {
+      "response": "yes",
+      "limit": 15000,
+      "deductible": 25000
+    },
+    "fungus_exclusion": {
+      "response": "no"
+    },
+    "replacement_cost": {
+      "response": "yes"
+    },
+    "agreed_value": {
+      "response": "yes"
+    },
+    "coinsurance": {
+      "response": "no",
+      "percent": null
+    },
+    "equipment_breakdown": {
+      "response": "yes",
+      "limit": 16700000,
+      "deductible": 25000
+    },
+    "ordinance_undamaged_portion": {
+      "response": "yes",
+      "limit": "INCLUDED",
+      "deductible": 25000
+    },
+    "ordinance_demolition": {
+      "response": "yes",
+      "limit": 1000000,
+      "deductible": 25000
+    },
+    "ordinance_increased_cost": {
+      "response": "yes",
+      "limit": 1000000,
+      "deductible": 25000
+    },
+    "earth_movement": {
+      "response": "no"
+    },
+    "flood": {
+      "response": "no"
+    },
+    "wind_hail": {
+      "included": true,
+      "subject_to_provisions": "yes",
+      "limit": "INCLUDED",
+      "deductible": "2% OF TIV"
+    },
+    "named_windstorm": {
+      "included": true,
+      "subject_to_provisions": "yes",
+      "limit": "INCLUDED",
+      "deductible": "5% OF TIV"
+    },
+    "subrogation_waiver": {
+      "response": "yes"
+    }
+  },
+  "additional_interest": {
+    "name": "First Meridian Bank, ISAOA/ATIMA",
+    "address1": "Attn: Loan Servicing",
+    "address2": "400 N LaSalle Street, Suite 1200",
+    "city": "Chicago",
+    "state": "IL",
+    "zip": "60654",
+    "interests": [
+      "mortgagee",
+      "lenders_loss_payable"
+    ],
+    "loan_number": "FMB-CRE-2026-0918"
+  },
+  "lender_servicing_agent": {
+    "name": "Midwest Commercial Loan Servicing, Inc.",
+    "address1": "2200 Corporate Ridge Parkway, Suite 700",
+    "city": "Overland Park",
+    "state": "KS",
+    "zip": "66210"
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "meta": {"specimen": true, "source_documents": ["loan_agreement.pdf", "nfip_dec.pdf", "excess_flood_dec.pdf"], "extracted_on": "2026-08-19"},
+  "certificate": {"issue_date": "08/19/2026", "evidence_number": "EOF-2026-00742", "revision": "0", "total_pages": "1", "prior_evidence_date": ""},
+  "producer": {
+    "name": "Zywave AI Demo Agency", "contact_name": "Certificate Services",
+    "address1": "10100 W. Innovation Drive", "address2": "Suite 300",
+    "city": "Wauwatosa", "state": "WI", "zip": "53226",
+    "phone": "(262) 555-0140", "fax": "(262) 555-0141",
+    "email": "certificates@zywaveaidemoagency.example",
+    "customer_id": "RCH-88412",
+    "authorized_representative": "Brett Cleveringa"
+  },
+  "insurers": [
+    {"letter": "A", "name": "NFIP / Wright National Flood", "naic": "10657"},
+    {"letter": "B", "name": "Lexington Surplus Lines Ins Co", "naic": "19437"}
+  ],
+  "insured": {"name": "Riverside Commerce Holdings LLC",
+    "address1": "8875 Riverside Commerce Way", "city": "Aurora", "state": "IL", "zip": "60502"},
+  "location": {"address1": "8875 Riverside Commerce Way", "city": "Aurora", "state": "IL", "zip": "60502"},
+  "location_description": [
+    "142,000 SF single-story distribution warehouse, JM/Class A construction, fully sprinklered (ESFR). Lowest floor elevation 618.4 ft NAVD88; BFE 617.0 ft."
+  ],
+  "risk": {
+    "date_of_construction": "2019",
+    "current_flood_zone": "AE",
+    "rated_zone": "AE",
+    "grandfathered": "N",
+    "replacement_cost": 14500000,
+    "condominium_coverage_for": null,
+    "unit_count": null,
+    "building_occupancy": "non_residential",
+    "contents_coverage_type": "non_residential"
+  },
+  "primary": {
+    "insurer_letter": "A",
+    "policy_number": "WNF-CF-4471982",
+    "effective": "03/01/2026",
+    "expiration": "03/01/2027",
+    "market": "nfip_wyo",
+    "policy_form": "general_property",
+    "product_type": "standard",
+    "programs": [],
+    "building": {"limit": 500000, "deductible": 25000},
+    "contents": {"limit": 500000, "deductible": 25000}
+  },
+  "excess_1": {
+    "insurer_letter": "B",
+    "policy_number": "LEX-XSF-118824",
+    "effective": "03/01/2026",
+    "expiration": "03/01/2027",
+    "following_form": true,
+    "market": "private",
+    "policy_form": "general_property",
+    "product_type": "other",
+    "product_other_description": "EXCESS FLOOD - SURPLUS LINES",
+    "programs": [],
+    "building": {"limit": 14000000, "deductible": 500000},
+    "contents": {"limit": 1700000, "deductible": 500000},
+    "time_element": {"business_income": true, "extra_expense": true,
+                     "additional_living_expense": false, "actual_loss_sustained": true, "months": 12}
+  },
+  "excess_2": null,
+  "additional_interest": {
+    "name": "First Meridian Bank, ISAOA/ATIMA",
+    "address1": "Attn: Loan Servicing", "address2": "400 N LaSalle Street, Suite 1200",
+    "city": "Chicago", "state": "IL", "zip": "60654",
+    "interests": ["mortgagee"],
+    "loan_number": "FMB-CRE-2026-0918",
+    "named_on": ["primary", "excess_1"]
+  },
+  "remarks": [
+    "RE: Loan No. FMB-CRE-2026-0918. NFIP primary at maximum non-residential limits ($500,000 building / $500,000 contents) with excess flood layered above to $14,000,000 building.",
+    "Total flood program $14,500,000 building / $2,200,000 contents, satisfying Loan Agreement Sec. 5.4(c) full replacement cost requirement."
+  ]
+}

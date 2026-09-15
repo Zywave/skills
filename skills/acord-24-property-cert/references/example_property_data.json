@@ -1,0 +1,118 @@
+{
+  "meta": {
+    "specimen": true,
+    "source_documents": [
+      "loan_agreement.pdf",
+      "property_policy.pdf"
+    ],
+    "extracted_on": "2026-08-19"
+  },
+  "certificate": {
+    "number": "CPI-2026-00318",
+    "revision": "0",
+    "issue_date": "08/19/2026"
+  },
+  "producer": {
+    "name": "Zywave AI Demo Agency",
+    "address1": "10100 W. Innovation Drive",
+    "address2": "Suite 300",
+    "city": "Wauwatosa",
+    "state": "WI",
+    "zip": "53226",
+    "contact_name": "Certificate Services",
+    "phone": "(262) 555-0140",
+    "fax": "(262) 555-0141",
+    "email": "certificates@zywaveaidemoagency.example",
+    "authorized_representative": "Brett Cleveringa"
+  },
+  "insured": {
+    "name": "Riverside Commerce Holdings LLC",
+    "address1": "8875 Riverside Commerce Way",
+    "city": "Aurora",
+    "state": "IL",
+    "zip": "60502"
+  },
+  "certificate_holder": {
+    "name": "First Meridian Bank, ISAOA/ATIMA",
+    "address1": "Attn: Loan Servicing",
+    "address2": "400 N LaSalle Street, Suite 1200",
+    "city": "Chicago",
+    "state": "IL",
+    "zip": "60654",
+    "verbatim_source": "Loan Agreement Sec. 5.4",
+    "verbatim_match": true
+  },
+  "insurers": [
+    {
+      "letter": "A",
+      "name": "Northgate Specialty Insurance Company",
+      "naic": "99017",
+      "am_best": "A IX"
+    },
+    {
+      "letter": "B",
+      "name": "Lakeshore Mutual Casualty",
+      "naic": "88214",
+      "am_best": ""
+    }
+  ],
+  "policies": {
+    "property": {
+      "insurer_letter": "A",
+      "policy_number": "NGS-CP-8841027",
+      "effective": "03/01/2026",
+      "expiration": "03/01/2027",
+      "perils": [
+        "special"
+      ],
+      "other_perils": [],
+      "deductibles": [
+        25000
+      ],
+      "limits": {
+        "building": 14500000,
+        "personal_property": 2200000,
+        "business_income": 3000000,
+        "extra_expense": 500000,
+        "rental_value": null
+      },
+      "blanket": [
+        {
+          "type": "building_and_pp",
+          "amount": 16700000
+        }
+      ],
+      "other_coverages": [
+        {
+          "description": "ORDINANCE OR LAW A/B/C",
+          "amount": 1000000
+        }
+      ]
+    },
+    "inland_marine": null,
+    "crime": null,
+    "boiler_machinery": {
+      "insurer_letter": "B",
+      "policy_number": "LMC-EB-2205513",
+      "effective": "03/01/2026",
+      "expiration": "03/01/2027",
+      "coverages": [
+        {
+          "description": "EQUIPMENT BREAKDOWN",
+          "amount": 14500000
+        }
+      ]
+    },
+    "other": null
+  },
+  "location_description": [
+    "LOC 1: 8875 Riverside Commerce Way, Aurora, IL 60502 - 142,000 SF single-story distribution warehouse, JM/Class A construction, built 2019, fully sprinklered (ESFR)."
+  ],
+  "remarks": [
+    "RE: Loan No. FMB-CRE-2026-0918. First Meridian Bank, ISAOA/ATIMA is named MORTGAGEE and LOSS PAYEE on the captioned property policy per CP 12 18 attached.",
+    "Property is written on SPECIAL causes of loss form, replacement cost valuation, with agreed value in effect. Blanket building and personal property limit of $16,700,000 applies as shown.",
+    "*** FLOOD IS NOT COVERED under this policy. The premises is mapped in FEMA Zone AE. Loan Agreement Sec. 5.4(c) requires flood coverage at full replacement cost or the maximum NFIP limit. No flood policy is currently in force.",
+    "*** EARTHQUAKE IS NOT COVERED under this policy.",
+    "Equipment breakdown is carried separately under Lakeshore Mutual Casualty policy LMC-EB-2205513 as shown above."
+  ]
+}
