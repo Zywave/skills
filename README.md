@@ -22,13 +22,37 @@ plugin.json      generic plugin manifest read by the .agents/ marketplace above
 
 ## Skills
 
+**Prospecting**
+
+| Skill | What it does |
+|---|---|
+| [`prospect-prep`](skills/prospect-prep/) | Build a carrier-ready prep packet for one named commercial prospect — company facts with sources, submission gaps, open questions, talking points. Never sends anything. |
+| [`territory-market-map`](skills/territory-market-map/) | Size a sales territory or market from Zywave discovery data into a workbook and memo. |
+| [`vertical-prospecting-campaign`](skills/vertical-prospecting-campaign/) | Run a full prospecting motion for one industry vertical, from ideal customer profile to a scheduled outreach sequence. |
+
+**Certificates of insurance**
+
+| Skill | What it does |
+|---|---|
+| [`acord-25-new-coi`](skills/acord-25-new-coi/) | Issue an ACORD 25 liability certificate from a certificate request, comparing policies against contract requirements. |
+| [`acord-24-property-cert`](skills/acord-24-property-cert/) | Issue an ACORD 24 multi-line commercial property certificate from a loan or lease requirement. |
+| [`acord-27-property-evidence`](skills/acord-27-property-evidence/) | Issue an ACORD 27 evidence of property insurance for a single residential or single-policy lender request. |
+| [`acord-28-commercial-property-evidence`](skills/acord-28-commercial-property-evidence/) | Issue an ACORD 28 commercial property evidence, answering the full lender coverage questionnaire. |
+| [`acord-29-flood-evidence`](skills/acord-29-flood-evidence/) | Issue an ACORD 29 evidence of flood insurance, including NFIP/excess flood tower structure. |
+| [`certificate-compliance-review`](skills/certificate-compliance-review/) | Compare a contract's insurance requirements against actual policies and produce a 3-tab compliance workbook. Currently wired to ACORD 25 data only. |
+
+**Benefits compliance**
+
+| Skill | What it does |
+|---|---|
+| [`cobra-notice-packet`](skills/cobra-notice-packet/) | Assemble the correct COBRA notice packet for a coverage-start, election, or termination event. |
+| [`eb-annual-notice-packet`](skills/eb-annual-notice-packet/) | Assemble an employer's annual group health plan notice packet and distribution memo. |
+
+**Book of business**
+
 | Skill | What it does |
 |---|---|
 | [`book-of-business-audit`](skills/book-of-business-audit/) | Sweep the CRM book for data-quality issues (missing contacts, duplicates, stale records) into a workbook. Read-only. |
-| [`cobra-notice-packet`](skills/cobra-notice-packet/) | Assemble the correct COBRA notice packet for a coverage-start, election, or termination event. |
-| [`eb-annual-notice-packet`](skills/eb-annual-notice-packet/) | Assemble an employer's annual group health plan notice packet and distribution memo. |
-| [`territory-market-map`](skills/territory-market-map/) | Size a sales territory or market from Zywave discovery data into a workbook and memo. |
-| [`vertical-prospecting-campaign`](skills/vertical-prospecting-campaign/) | Run a full prospecting motion for one industry vertical, from ideal customer profile to a scheduled outreach sequence. |
 
 ## Adding or updating a skill
 
