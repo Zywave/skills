@@ -1,0 +1,119 @@
+{
+  "meta": {
+    "specimen": true,
+    "source_documents": [
+      "mortgage_commitment.pdf",
+      "ho3_policy.pdf"
+    ],
+    "extracted_on": "2026-08-19"
+  },
+  "certificate": {
+    "issue_date": "08/19/2026"
+  },
+  "producer": {
+    "name": "Zywave AI Demo Agency",
+    "address1": "10100 W. Innovation Drive",
+    "address2": "Suite 300",
+    "city": "Wauwatosa",
+    "state": "WI",
+    "zip": "53226",
+    "phone": "(262) 555-0140",
+    "fax": "(262) 555-0141",
+    "email": "certificates@zywaveaidemoagency.example",
+    "customer_id": "RCH-88412",
+    "producer_code": "44127",
+    "sub_producer_code": "008",
+    "authorized_representative": "Brett Cleveringa"
+  },
+  "insurer": {
+    "name": "Northgate Specialty Insurance Company",
+    "address1": "One Northgate Plaza",
+    "address2": "Suite 2200",
+    "city": "Hartford",
+    "state": "CT",
+    "zip": "06103"
+  },
+  "insured": {
+    "name": "Marcus and Elena Rivera",
+    "address1": "4417 Sheridan Oaks Court",
+    "city": "Brookfield",
+    "state": "WI",
+    "zip": "53045"
+  },
+  "policy": {
+    "policy_number": "NGS-HO-2249831",
+    "effective": "09/01/2026",
+    "expiration": "09/01/2027",
+    "continuous_until_cancelled": false,
+    "perils": [
+      "special"
+    ],
+    "prior_evidence_date": ""
+  },
+  "property_location": {
+    "address1": "4417 Sheridan Oaks Court",
+    "city": "Brookfield",
+    "county": "Waukesha",
+    "state": "WI",
+    "zip": "53045"
+  },
+  "property_description": [
+    "Single-family owner-occupied dwelling, 3,240 SF, frame construction, built 2004, attached 3-car garage. Central station fire and burglar alarm."
+  ],
+  "coverages": [
+    {
+      "description": "DWELLING (COVERAGE A) - REPLACEMENT COST",
+      "limit": 685000,
+      "deductible": 2500
+    },
+    {
+      "description": "OTHER STRUCTURES (COVERAGE B)",
+      "limit": 68500,
+      "deductible": 2500
+    },
+    {
+      "description": "PERSONAL PROPERTY (COVERAGE C) - REPLACEMENT COST",
+      "limit": 479500,
+      "deductible": 2500
+    },
+    {
+      "description": "LOSS OF USE (COVERAGE D)",
+      "limit": 137000,
+      "deductible": null
+    },
+    {
+      "description": "EXTENDED REPLACEMENT COST - 25% ADDITIONAL DWELLING",
+      "limit": 171250,
+      "deductible": null
+    },
+    {
+      "description": "ORDINANCE OR LAW - 10% OF COVERAGE A",
+      "limit": 68500,
+      "deductible": null
+    },
+    {
+      "description": "WIND/HAIL",
+      "limit": "INCLUDED",
+      "deductible": "1% OF COV A"
+    }
+  ],
+  "additional_interest": {
+    "name": "First Meridian Bank, ISAOA/ATIMA",
+    "address1": "Attn: Loan Servicing",
+    "address2": "400 N LaSalle Street, Suite 1200",
+    "city": "Chicago",
+    "state": "IL",
+    "zip": "60654",
+    "interests": [
+      "mortgagee"
+    ],
+    "loan_number": "FMB-RES-2026-4417"
+  },
+  "remarks": [
+    "RE: Loan No. FMB-RES-2026-4417, purchase money first mortgage, closing 09/01/2026.",
+    "First Meridian Bank, ISAOA/ATIMA is named MORTGAGEE on the captioned policy. Dwelling is written at replacement cost with 25% extended replacement cost, agreed value not applicable.",
+    "Policy is paid in full through 09/01/2027. Premium escrowed.",
+    "*** FLOOD IS NOT COVERED under this policy. The premises is mapped in FEMA Zone X (minimal risk) and flood insurance is not required by the commitment; confirm before closing if the lender's determination differs.",
+    "*** EARTHQUAKE IS NOT COVERED under this policy."
+  ]
+}
