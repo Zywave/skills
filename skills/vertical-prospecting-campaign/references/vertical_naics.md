@@ -49,4 +49,4 @@ When the producer gives a window ("renewing in Q1", "next 90 days"), set `renewa
 
 ## Compliance-signal campaigns
 
-`hasOshaViolations: true` (manufacturing, construction, warehousing) and `hasDotViolations: true` (trucking, distribution, landscaping fleets) surface companies with a public reason to talk. Lead the `painPointPool` with the matching compliance topic. Do not quote a specific violation in the campaign unless the producer has read it in the research brief.
+`hasDotViolations: true` (trucking, distribution, landscaping fleets) and `hasOshaViolations: true` (manufacturing, construction, warehousing) narrow to employers **with a compliance record on file** — regulated carriers and inspected worksites — not to employers with violations. Verified Sep 2026: every DOT-flagged record sampled was GREEN. To target actual violations, read `complianceReport.checks[].result` on the returned records and keep only non-GREEN results; expect a small fraction. Lead the `painPointPool` with the matching compliance topic. Do not quote a specific violation in the campaign unless the producer has read it in the research brief.

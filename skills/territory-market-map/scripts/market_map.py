@@ -232,7 +232,8 @@ def main():
     for col, w in zip("ABC", (40, 36, 60)):
         ws.column_dimensions[col].width = w
 
-    bands = [b for b in SIZE_ORDER if any(b in g for g in grid.values())] or sorted({b for g in grid.values() for b in g})
+    present = {b for g in grid.values() for b in g}
+    bands = [b for b in SIZE_ORDER if b in present] + sorted(b for b in present if b not in SIZE_ORDER)
     rows = []
     for ind in industries:
         r = [ind] + [grid[ind].get(b) for b in bands]

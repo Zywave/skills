@@ -40,7 +40,7 @@ Run `discovery_company_search` with `pageSize: 1` for each cell of the grid in `
 
 - **Industry × size band** — 20 NAICS sectors × 4 employee bands (10–49, 50–99, 100–249, 250+). ~80 calls.
 - **Renewal month** — 12 calls with `renewalMonths: [m]`, plus one baseline with no renewal filter so you can report what share has a known renewal month.
-- **Signals** — one call each for `selfFunded: true`, `hasOshaViolations: true`, `hasDotViolations: true`, `fidelityBondOutOfCompliance: true`, `hasContactEmails: true`.
+- **Signals** — one call each for `selfFunded: true`, `hasOshaViolations: true`, `hasDotViolations: true`, `hasContactEmails: true`. **Label the DOT and OSHA counts as "has a DOT/OSHA compliance record," not "has violations."** Verified Sep 2026: `hasDotViolations: true` returned 4,340 of 13,362 Minnesota employers and every sampled record's DOT check was GREEN — the flag identifies regulated carriers with a record on file. Actual violations are read client-side from `complianceReport.checks[].result` (anything other than GREEN) on sampled records and reported in Segment Stats. `hasOshaViolations` is assumed to behave the same way; the record exposes no OSHA check to confirm. **Do not report a `fidelityBondOutOfCompliance` count** — that filter is ignored server-side (verified Sep 2026) and returns the unfiltered universe. Bond compliance can only be measured from `fidelityBonds[].is_compliant` on sampled records; report it in the Segment Stats tab as a sampled share.
 
 For Benefits, add **plan type** (`benefitsPlanTypes` Medical / Dental / Vision) and skip the DOT signal.
 
@@ -63,6 +63,8 @@ Do not call `discovery_company_contacts_get`. This deliverable never enriches or
 ## 4. Overlay the agency's own book
 
 Pull the agency's non-archived accounts in the territory: `account_search` with `filter: "isArchived eq false and state eq 'XX'"` (one call per state, `top: 100`, page by `skip`). Save to `/home/claude/market/book.json`.
+
+> **Known platform defect (Sep 2026):** `account_search` returns `INTERNAL_ERROR` on `state eq` and `city eq` filters even though they are documented as filterable. `isArchived`, `classification`, `msid eq`, and `startswith(name,…)` work. So: try the state filter once; on error, pull the whole non-archived book (`filter: "isArchived eq false"`, `top: 100`, page by `skip`, ~65 calls for 6,500 accounts) and filter on `state` in memory. Cache the pull for the rest of the run. For lists of 50 or fewer, `msid eq '<M…>'` per candidate is cheaper. Tell the user which path you took.
 
 The script matches sampled companies to the book by `msid` first, then by normalized name + city. Matches are marked **Owned**. Unmatched are **Not in CRM**. For the count grid, owned share can only be estimated from the samples — the workbook labels it "sampled owned share."
 
