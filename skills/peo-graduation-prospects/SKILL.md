@@ -32,7 +32,7 @@ A PEO makes sense at fifteen employees. At seventy-five, the per-employee admini
 
 `lineOfBusiness` is `Benefits`. If the producer names a PEO, treat the name like a competitor name: filings spell it several ways (TriNet / TriNet Group / TriNet HR; Justworks; Insperity / Administaff; ADP TotalSource; Paychex PEO; Vensure). Search each variant and merge on `msid`.
 
-> **Verified (Sep 2026):** the `peoName` filter works — a PEO name narrows Wisconsin benefits employers from ~4,800 to a handful. But **the returned record does not carry a PEO field**, so there is nothing to spot-check on the record. The PEO column in the output is the name the query used, not a value read back. Run one query per PEO variant and tag rows by which query returned them. Omitting `peoName` does not filter to "any PEO" — always name at least one.
+> **Note:** the `peoName` filter works — a PEO name narrows Wisconsin benefits employers from ~4,800 to a handful. But **the returned record does not carry a PEO field**, so there is nothing to spot-check on the record. The PEO column in the output is the name the query used, not a value read back. Run one query per PEO variant and tag rows by which query returned them. Omitting `peoName` does not filter to "any PEO" — always name at least one.
 
 One clarifying message at most.
 
@@ -50,7 +50,7 @@ Drop `isOutOfBusiness: true`. Keep the PEO name from each record; it's the most 
 
 `account_search` with `filter: "isArchived eq false and state eq 'XX'"` per state, paged. Match on `msid`, then normalized name + city.
 
-> **Known platform defect (Sep 2026):** `account_search` returns `INTERNAL_ERROR` on `state eq` and `city eq` filters even though they are documented as filterable. `isArchived`, `classification`, `msid eq`, and `startswith(name,…)` work. So: try the state filter once; on error, pull the whole non-archived book (`filter: "isArchived eq false"`, `top: 100`, page by `skip`, ~65 calls for 6,500 accounts) and filter on `state` in memory. Cache the pull for the rest of the run. For lists of 50 or fewer, `msid eq '<M…>'` per candidate is cheaper. Tell the user which path you took.
+> **Note:** `account_search`'s `state eq` and `city eq` filters are unreliable and can return `INTERNAL_ERROR` even though they're documented as filterable. `isArchived`, `classification`, `msid eq`, and `startswith(name,…)` work reliably. So: try the state filter once; on error, pull the whole non-archived book (`filter: "isArchived eq false"`, `top: 100`, page by `skip`, ~65 calls for 6,500 accounts) and filter on `state` in memory. Cache the pull for the rest of the run. For lists of 50 or fewer, `msid eq '<M…>'` per candidate is cheaper. Tell the user which path you took.
 
 - **Existing Benefits client** → remove from the list and count it. If the agency already has the benefits, the PEO conversation is a service conversation, not a prospecting one; note it separately for the account manager.
 - **Benefits Prospect in CRM** → keep, flag.
@@ -60,7 +60,7 @@ Drop `isOutOfBusiness: true`. Keep the PEO name from each record; it's the most 
 
 ## 4. Pull the explainer
 
-`content_search` for `PEO professional employer organization employers` (the shorter query is the one that returns the library's piece; verified Sep 2026: "Professional Employer Organizations", an advantages-and-disadvantages article). Select by title, dedupe on `contentId`, `content_download` with `convertToPdf: true` — the item carries no `fileDownloadUrl`. If `content_search` returns `INTERNAL_ERROR`, wait a minute and retry once before giving up; the service has brief outages.
+`content_search` for `PEO professional employer organization employers` (the shorter query is the one that returns the library's piece: "Professional Employer Organizations", an advantages-and-disadvantages article). Select by title, dedupe on `contentId`, `content_download` with `convertToPdf: true` — the item carries no `fileDownloadUrl`. If `content_search` returns `INTERNAL_ERROR`, wait a minute and retry once before giving up; the service has brief outages.
 
 If the library has a piece on **exiting a PEO** (timing, notice periods, what transfers), take that too. Leaving a PEO mid-year is disruptive; the explainer that says so is the one that builds trust.
 

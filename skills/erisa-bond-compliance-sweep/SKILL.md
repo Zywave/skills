@@ -29,13 +29,13 @@ ERISA requires every person who handles plan funds to be bonded for at least 10%
 
 `lineOfBusiness` is `Benefits`. Add `hasContactEmails: true` only for the prospect half.
 
-> **Known platform defect (Sep 2026):** the `fidelityBondOutOfCompliance` filter is **ignored** by `discovery_company_search` — `true` and `false` return the same `totalCount` and the same records. Pass it anyway (so the skill starts working the day it's fixed), but **never trust the count it returns as the out-of-compliance universe**. Compliance is determined client-side from `fidelityBonds[].is_compliant` on each record. In a Wisconsin sample, roughly 1 in 8 records had a non-compliant bond; plan page budgets accordingly.
+> **Note:** the `fidelityBondOutOfCompliance` filter on `discovery_company_search` has no effect — `true` and `false` return the same `totalCount` and the same records. Pass it anyway (so the skill picks it up automatically if that changes), but **never trust the count it returns as the out-of-compliance universe**. Compliance is determined client-side from `fidelityBonds[].is_compliant` on each record. In a Wisconsin sample, roughly 1 in 8 records had a non-compliant bond; plan page budgets accordingly.
 
 ---
 
 ## 2. Pull the out-of-compliance universe
 
-Because the server filter is ignored, this step is a **scan, not a lookup**. Run it in two modes:
+Because the filter has no effect, this step is a **scan, not a lookup**. Run it in two modes:
 
 **Client mode (always first, always tractable).** For each Benefits client in the book, resolve its market-data record — `discovery_company_search` with `companyName` and `states` (one call per client; `msid` match if the account carries one) — and read `fidelityBonds[]`. A 300-group book is 300 calls. Tell the user the count and proceed.
 
@@ -58,7 +58,7 @@ Drop `isOutOfBusiness: true`. Skip any record where `plan_assets` is null — yo
 
 Pull the agency's benefits accounts: `account_search` with `filter: "isArchived eq false and state eq 'XX'"` per state (or the whole book for a client-only sweep), `top: 100`, paged by `skip`. Match on `msid`, then normalized name + city.
 
-> **Known platform defect (Sep 2026):** `account_search` returns `INTERNAL_ERROR` on `state eq` and `city eq` filters even though they are documented as filterable. `isArchived`, `classification`, `msid eq`, and `startswith(name,…)` work. So: try the state filter once; on error, pull the whole non-archived book (`filter: "isArchived eq false"`, `top: 100`, page by `skip`, ~65 calls for 6,500 accounts) and filter on `state` in memory. Cache the pull for the rest of the run. For lists of 50 or fewer, `msid eq '<M…>'` per candidate is cheaper. Tell the user which path you took.
+> **Note:** `account_search`'s `state eq` and `city eq` filters are unreliable and can return `INTERNAL_ERROR` even though they're documented as filterable. `isArchived`, `classification`, `msid eq`, and `startswith(name,…)` work reliably. So: try the state filter once; on error, pull the whole non-archived book (`filter: "isArchived eq false"`, `top: 100`, page by `skip`, ~65 calls for 6,500 accounts) and filter on `state` in memory. Cache the pull for the rest of the run. For lists of 50 or fewer, `msid eq '<M…>'` per candidate is cheaper. Tell the user which path you took.
 
 Two lists:
 

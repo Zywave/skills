@@ -27,7 +27,7 @@ Narrow only when asked, using the filterable fields:
 
 | Ask | `account_search` filter |
 |---|---|
-| One state | pull all, filter `state` in memory — `state eq` currently returns `INTERNAL_ERROR` (platform defect, Sep 2026) |
+| One state | pull all, filter `state` in memory — the `state eq` filter on `account_search` is unreliable, so filter client-side |
 | Commercial only | `isArchived eq false and classification eq 'Commercial'` |
 | Mid-market | `isArchived eq false and clientSize eq 'From100To499'` |
 | Touched recently | `isArchived eq false and updatedDateTime ge 2026-01-01T00:00:00Z` |

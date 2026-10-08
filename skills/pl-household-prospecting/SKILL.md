@@ -38,7 +38,7 @@ One clarifying message at most. If the producer gives only a city, ask for ZIPs 
 
 `discovery_household_search` with the parameters. Read `totalCount` first; the universe for a value band in a state can be tens of thousands, so page with `pageSize: 25` to at most 200 records and tighten geography or the band beyond that.
 
-> **Verified (Sep 2026) — two behaviors that shape the list:**
+> **Two behaviors that shape the list:**
 > 1. **Results come back sorted by `totalPropertyValue` descending, and there's no way to change it.** Two Wayzata ZIPs at $600K–$2M returned 1,410 households, and the first 25 were all between $1.94M and $2.0M. A 200-record cap on a wide band only ever shows the top of the band. For any band wider than about 2×, split it into slices (e.g. $600–900K, $900K–$1.3M, $1.3–2M) and take pages from each, so the producer sees the whole range and not just the ceiling.
 > 2. **The ZIP filter matches any property the household owns; the record's `street`/`city`/`zipcode` is the primary residence.** In the same run, 4 of 18 kept households lived outside the target ZIPs — Mound, Chanhassen, and one in Scottsdale, AZ — and owned a property inside them. Those are second-home and seasonal-resident prospects, often the best ones. Keep them, and tag every row **resides in target** or **owns property in target, resides elsewhere** so the producer can see which conversation it is.
 
@@ -58,7 +58,7 @@ Household MSIDs start with `H`. Keep them; they are what the campaign tool needs
 
 `account_search` with `filter: "isArchived eq false and classification eq 'Personal' and state eq 'XX'"`, paged.
 
-> **Known platform defect (Sep 2026):** `account_search` returns `INTERNAL_ERROR` on `state eq` and `city eq` filters even though they are documented as filterable. `isArchived`, `classification`, `msid eq`, and `startswith(name,…)` work. So: try the state filter once; on error, pull the PL book (`filter: "isArchived eq false and classification eq 'Personal'"`, `top: 100`, page by `skip`, ~65 calls for 6,500 accounts) and filter on `state` in memory. Cache the pull for the rest of the run. For lists of 50 or fewer, `msid eq '<M…>'` per candidate is cheaper. Tell the user which path you took. Match on `msid` first, then normalized last name + street + ZIP (household records carry `street` and `zipcode`).
+> **Note:** `account_search`'s `state eq` and `city eq` filters are unreliable and can return `INTERNAL_ERROR` even though they're documented as filterable. `isArchived`, `classification`, `msid eq`, and `startswith(name,…)` work reliably. So: try the state filter once; on error, pull the PL book (`filter: "isArchived eq false and classification eq 'Personal'"`, `top: 100`, page by `skip`, ~65 calls for 6,500 accounts) and filter on `state` in memory. Cache the pull for the rest of the run. For lists of 50 or fewer, `msid eq '<M…>'` per candidate is cheaper. Tell the user which path you took. Match on `msid` first, then normalized last name + street + ZIP (household records carry `street` and `zipcode`).
 
 - **Existing PL client** → remove, count. (For those, use `pl-household-rounding` instead.)
 - **PL Prospect in CRM** → keep, flag.

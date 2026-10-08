@@ -40,7 +40,7 @@ One clarifying message at most. Default and state everything else.
 
 Call `discovery_company_search` **once per month in the window**, not once with all months. The response carries no per-record renewal month, so a combined query can't be ranked soonest-first; per-month queries give every row its month and keep each `totalCount` smaller. Read each `totalCount` and tell the producer the size of the universe before paging.
 
-> **Benefits is January-heavy (verified Sep 2026).** For `lineOfBusiness: Benefits`, the renewal month is effectively the Form 5500 plan-year start, and most plans run on the calendar year. WI + IL, 50–500 lives, Q1: January 1,613, February 38, March 68. Expect this. Say it to the producer before they ask why the list is lopsided. Tighten **January** by state, size band, or vertical rather than truncating it, and present February and March as the small, less-contested set — those off-cycle groups get far fewer calls. Commercial renewals are spread across the year and don't need this treatment.
+> **Benefits is January-heavy.** For `lineOfBusiness: Benefits`, the renewal month is effectively the Form 5500 plan-year start, and most plans run on the calendar year. In a WI + IL, 50–500 lives sample, Q1 broke down January 1,613, February 38, March 68. Expect this. Say it to the producer before they ask why the list is lopsided. Tighten **January** by state, size band, or vertical rather than truncating it, and present February and March as the small, less-contested set — those off-cycle groups get far fewer calls. Commercial renewals are spread across the year and don't need this treatment.
 
 - Under 25: loosen one constraint (widen the size band or add a month) and say so.
 - 25–300: page it all (`pageSize: 25`, `pageToken`).
@@ -54,7 +54,7 @@ Drop `isOutOfBusiness: true`. Keep everything else.
 
 Pull the agency's accounts in the territory: `account_search` with `filter: "isArchived eq false and state eq 'XX'"`, `top: 100`, paging by `skip`. One call per state.
 
-> **Known platform defect (Sep 2026):** `account_search` returns `INTERNAL_ERROR` on `state eq` and `city eq` filters even though they are documented as filterable. `isArchived`, `classification`, `msid eq`, and `startswith(name,…)` work. So: try the state filter once; on error, pull the whole non-archived book (`filter: "isArchived eq false"`, `top: 100`, page by `skip`, ~65 calls for 6,500 accounts) and filter on `state` in memory. Cache the pull for the rest of the run. For lists of 50 or fewer, `msid eq '<M…>'` per candidate is cheaper. Tell the user which path you took.
+> **Note:** `account_search`'s `state eq` and `city eq` filters are unreliable and can return `INTERNAL_ERROR` even though they're documented as filterable. `isArchived`, `classification`, `msid eq`, and `startswith(name,…)` work reliably. So: try the state filter once; on error, pull the whole non-archived book (`filter: "isArchived eq false"`, `top: 100`, page by `skip`, ~65 calls for 6,500 accounts) and filter on `state` in memory. Cache the pull for the rest of the run. For lists of 50 or fewer, `msid eq '<M…>'` per candidate is cheaper. Tell the user which path you took.
 
 Match discovery results to accounts on `msid` first, then on normalized name + city (strip punctuation, suffixes like Inc/LLC, and spaces; compare lowercase). Mark each discovery record:
 

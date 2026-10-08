@@ -21,7 +21,7 @@ Rounding — getting the second and third policy from a household that has one �
 
 ## 1. Pull the personal lines book
 
-`account_search` with `filter: "isArchived eq false and classification eq 'Personal'"`, `top: 100`, paged by `skip`. Narrow by `state` in memory if the producer asks for a territory — the `state eq` filter on `account_search` currently returns `INTERNAL_ERROR` (platform defect, Sep 2026), so pull the PL book and filter client-side. Keep only accounts whose `linesOfBusiness` includes a Personal Lines value that isn't "Prospect" — the skill is about clients.
+`account_search` with `filter: "isArchived eq false and classification eq 'Personal'"`, `top: 100`, paged by `skip`. Narrow by `state` in memory if the producer asks for a territory — the `state eq` filter on `account_search` is unreliable, so pull the PL book and filter client-side. Keep only accounts whose `linesOfBusiness` includes a Personal Lines value that isn't "Prospect" — the skill is about clients.
 
 Tell the producer the count before matching. A 3,000-household book is 3,000 lookups; say so and proceed unless told to narrow (by state, or by a producer's own accounts if the CRM carries that).
 

@@ -26,7 +26,7 @@ Contacts rot. The CFO who signed three years ago retired; the HR director's emai
 | Scope | How |
 |---|---|
 | Named accounts | `account_search` by name or ID |
-| A segment | `account_search` with `filter: "isArchived eq false and classification eq 'Commercial'"`, paged, then filter `state` in memory — `state eq` currently returns `INTERNAL_ERROR` (platform defect, Sep 2026) |
+| A segment | `account_search` with `filter: "isArchived eq false and classification eq 'Commercial'"`, paged, then filter `state` in memory — the `state eq` filter on `account_search` is unreliable, so filter client-side |
 | The whole book | Same, no segment — confirm first; say the account count |
 | Only accounts with a gap | Default — see step 2 |
 
