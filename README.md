@@ -30,7 +30,7 @@ plugin.json      generic plugin manifest read by the .agents/ marketplace above
 | [`territory-market-map`](skills/territory-market-map/) | Size a sales territory or market from Zywave discovery data into a workbook and memo. |
 | [`vertical-prospecting-campaign`](skills/vertical-prospecting-campaign/) | Run a full prospecting motion for one industry vertical, from ideal customer profile to a scheduled outreach sequence. |
 
-**Certificates of insurance**
+**Certificates and ID cards**
 
 | Skill | What it does |
 |---|---|
@@ -39,6 +39,7 @@ plugin.json      generic plugin manifest read by the .agents/ marketplace above
 | [`acord-27-property-evidence`](skills/acord-27-property-evidence/) | Issue an ACORD 27 evidence of property insurance for a single residential or single-policy lender request. |
 | [`acord-28-commercial-property-evidence`](skills/acord-28-commercial-property-evidence/) | Issue an ACORD 28 commercial property evidence, answering the full lender coverage questionnaire. |
 | [`acord-29-flood-evidence`](skills/acord-29-flood-evidence/) | Issue an ACORD 29 evidence of flood insurance, including NFIP/excess flood tower structure. |
+| [`auto-id-card`](skills/auto-id-card/) | Issue ACORD auto ID cards for one vehicle or a whole fleet, on the right state form, with every VIN checked before a card is cut. |
 | [`certificate-compliance-review`](skills/certificate-compliance-review/) | Compare a contract's insurance requirements against actual policies and produce a 3-tab compliance workbook. Currently wired to ACORD 25 data only. |
 
 **Benefits compliance**
@@ -53,6 +54,14 @@ plugin.json      generic plugin manifest read by the .agents/ marketplace above
 | Skill | What it does |
 |---|---|
 | [`book-of-business-audit`](skills/book-of-business-audit/) | Sweep the CRM book for data-quality issues (missing contacts, duplicates, stale records) into a workbook. Read-only. |
+
+**Loss data** (needs the Zywave loss data tools, a separate entitlement)
+
+| Skill | What it does |
+|---|---|
+| [`company-loss-check`](skills/company-loss-check/) | Summarize a named company's publicly reported large losses, or its whole corporate family's, with how many records carry a dollar amount. |
+| [`large-loss-explorer`](skills/large-loss-explorer/) | Rank the largest publicly reported losses for a line, industry, or period, with how many matched and what kind of figure each one is. |
+| [`loss-case-brief`](skills/loss-case-brief/) | Write a short, client-ready brief on one publicly reported loss case, with the amount labeled as an estimate, fine, settlement, or award. |
 
 ## Adding or updating a skill
 
